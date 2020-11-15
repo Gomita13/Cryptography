@@ -4,6 +4,7 @@ from pathlib import Path
 from tkinter.filedialog import askopenfilename
 import sys
 from Crypto.Cipher import DES
+from PIL import Image, ImageTk
 
 def selectIVFile(event):
 	global ivFile
@@ -14,11 +15,14 @@ def selectIVFile(event):
 
 def selectFile(event):
 	global file
-	global lblImg
+	global canvImg
 	file = askopenfilename()
-	lblImg["text"] = file
+	#slblImg["text"] = file
+	myImg = ImageTk.PhotoImage(Image.open(file).resize((540,480),Image.ANTIALIAS))
 	file = open(file,"rb")
-	#file_iv = open("iv.des","rb")
+	#VAMOS A CAMBIAR LA IMAGEN
+	canvImg.create_image(20,20,image=myImg,anchor='nw')
+	canvImg.image = myImg
 
 def encryptImage(event):
 	global file
@@ -76,8 +80,11 @@ window.title("DES IMAGE ENCRYPTION")
 frame = tk.Frame(master=window,width=590,height=620,bg="black")
 
 #CREAMOS UN LABEL PARA VISUALIZAR LA IMAGEN
-lblImg = tk.Label(foreground="medium purple",background="red",height=30,width=68,font=("Courier",10),anchor="w")
-lblImg.place(x=20,y=20)
+#lblImg = tk.Label(foreground="medium purple",background="red",height=30,width=68,font=("Courier",10),anchor="w")
+#lblImg.grid(column=1, row=1, sticky=(tk.W,tk.E))
+canvImg = tk.Canvas(frame,bg="black",height=480,width=540)
+canvImg.place(x=20,y=20)
+
 
 #CREAMOS EL BOTÓN PAR EL ARCHIVO
 btnFile = tk.Button(text="LOAD FILE",width=10,height=1,fg="aqua",bg="black")
