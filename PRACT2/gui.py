@@ -54,26 +54,26 @@ def decryptImage(event):
 	global ivFile
 	global cbMode
 	global txtKey
-	if ivFile!=None:
-		key = str.encode(txtKey.get())
-		mode = str(cbMode.get())
-		if mode == 'ECB':
-			cipher = DES.new(key,DES.MODE_ECB)
-		elif mode == 'CBC':
-			cipher = DES.new(key,DES.MODE_CBC,ivFile)
-		elif mode == 'CFB':
-			cipher = DES.new(key,DES.MODE_CFB,ivFile)
-		else:
-			cipher = DES.new(key,DES.MODE_OFB,ivFile)
-		file_out = open(file.name[:-8]+".bmp","wb")
-		header = file.read(54)
-		file_out.write(header) #IMAGE HEADER
-		content = file.read()
-		file_out.write(cipher.decrypt(content))
-		file_out.close()
-		file.close()
+	#if ivFile!=None:
+	key = str.encode(txtKey.get())
+	mode = str(cbMode.get())
+	if mode == 'ECB':
+		cipher = DES.new(key,DES.MODE_ECB)
+	elif mode == 'CBC':
+		cipher = DES.new(key,DES.MODE_CBC,ivFile)
+	elif mode == 'CFB':
+		cipher = DES.new(key,DES.MODE_CFB,ivFile)
 	else:
-		print('Select an IV file in order to decode your image')
+		cipher = DES.new(key,DES.MODE_OFB,ivFile)
+	file_out = open(file.name[:-8]+".bmp","wb")
+	header = file.read(54)
+	file_out.write(header) #IMAGE HEADER
+	content = file.read()
+	file_out.write(cipher.decrypt(content))
+	file_out.close()
+	file.close()
+	#else:
+	#	print('Select an IV file in order to decode your image')
 #CREAMOS LA VENTANA Y ASIGNAMOS UN TAMAÑO
 window = tk.Tk()
 window.title("DES IMAGE ENCRYPTION")
