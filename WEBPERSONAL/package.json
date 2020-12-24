@@ -1,0 +1,28 @@
+{
+  "name": "gomita",
+  "version": "1.0.0",
+  "description": "Página web personal de Sánchez Castro Gamaliel",
+  "main": "server.js",
+  "scripts": {
+    "test": "\"echo \"Error: no test specified\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gomita13/Cryptography.git"
+  },
+  "keywords": [
+    "Cryptography",
+    "web",
+    "personal",
+    "cv"
+  ],
+  "author": "Sánchez Castro Gamaliel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gomita13/Cryptography/issues"
+  },
+  "homepage": "https://github.com/Gomita13/Cryptography#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,80 @@
+
+.about-me{
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+}
+
+.item{
+	background-color: black;
+}
+
+.about-me-img{
+	width: 90vw;
+	height: 90vh;
+	margin: auto;
+}
+
+.title{
+	text-align: center;
+	margin-top: 3em;
+	margin-bottom: 3em;
+	color: black;
+	width: 100vw;
+	background-color: white;
+}
+
+.scholar{
+	width: 70vw;
+	height: 90vh;
+	background-color: white;
+	color: white;
+	margin: auto;
+}
+
+.scholar h2{
+	margin: auto;
+	text-align: center;
+	color: black;
+}
+
+.school{
+	background-color: white;
+	color: black;
+	height: 70vh;
+	text-align: center;
+	margin-top: 5em;
+}
+
+.school-info{
+	width: 70%;
+	margin: auto;
+}
+
+.school-info h3{
+	text-align: center;
+}
+
+.school-info h4{
+	text-align: center;
+}
+
+.school-info h5{
+	text-align: center;
+}
+
+.school img{
+	margin: 3em;
+}
+
+.hobbies{
+	width: 70vw !important;
+	height: 100vh;
+	margin: auto;
+	background-color: blue;
+}
+
+.hobbie-img{
+	width: 100%;
+	height: 70%;
+}

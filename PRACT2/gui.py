@@ -39,7 +39,7 @@ def encryptImage(event):
 	else:
 		cipher = DES.new(key,DES.MODE_OFB)
 	file_out = open(file.name[:-4]+"_"+mode+".bmp","wb")
-	file_iv = open(file.name[:-4]+"_iv.des","wb")
+	file_iv = open(file.name[:-4]+mode+"_iv.des","wb")
 	header = file.read(54)
 	file_out.write(header) #IMAGE HEADER
 	content = file.read()
