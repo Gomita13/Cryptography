@@ -87,7 +87,7 @@ class Cipher:
 		hash_obj = SHA1.new(signature)
 		original_message = message[:256]
 		fout = open("content.aes","wb")
-		fout.write(original_message)
+		fout.write(signature)
 		fout.close()
 		try:
 			pkcs1_15.new(public_key).verify(hash_obj,original_message)

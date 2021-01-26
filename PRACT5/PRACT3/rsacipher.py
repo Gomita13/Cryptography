@@ -55,7 +55,7 @@ class Cipher:
 	   IMPORTANTE: Llamar previamente a load_private_key(path)"""
 	@staticmethod
 	def decrypt(encrypted_file,private_key,file_output):
-		file_out = open(file_output,"w");
+		file_out = open(file_output,"wb");
 		enc_session_key, nonce, tag, ciphertext = \
 		[ encrypted_file.read(x) for x in (private_key.size_in_bytes(), 16, 16, -1) ]
 		# Decrypt the session key with the private RSA key
@@ -64,5 +64,5 @@ class Cipher:
 		# Decrypt the data with the AES session key
 		cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
 		data = cipher_aes.decrypt_and_verify(ciphertext, tag)
-		file_out.write(data.decode("utf-8"))
+		file_out.write(data)
 		file_out.close()
