@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #GUI PARA EL CIFRADOR AES
 import tkinter as tk
+from tkinter import messagebox
 from pathlib import Path
 from tkinter.filedialog import askopenfilename
 import sys
@@ -42,15 +43,18 @@ def encryptText(event):
 def decryptText(event):
 	global file 
 	global key
-	key = key.read()
-	nonce, tag, ciphertext = [ file.read(x) for x in (16, 16, -1) ]
-	cipher = AES.new(key, AES.MODE_EAX, nonce)
-	data = cipher.decrypt_and_verify(ciphertext, tag)
-	file_out = open(file.name[:-6]+"_d.txt", "w")
-	data = ''.join(data.decode('utf-8').split("\r"))
-	file_out.write(data)
-	file_out.close()
-	playsound('viento.mp3')
+	try:
+		key = key.read()
+		nonce, tag, ciphertext = [ file.read(x) for x in (16, 16, -1) ]
+		cipher = AES.new(key, AES.MODE_EAX, nonce)
+		data = cipher.decrypt_and_verify(ciphertext, tag)
+		file_out = open(file.name[:-6]+"_d.txt", "w")
+		data = ''.join(data.decode('utf-8').split("\r"))
+		file_out.write(data)
+		file_out.close()
+		playsound('viento.mp3')
+	except Exception:
+		messagebox.showinfo("Error","An error ocurred,, message has been modified")
 
 #CREAMOS LA VENTANA Y ASIGNAMOS UN TAMAÑO
 window = tk.Tk()
